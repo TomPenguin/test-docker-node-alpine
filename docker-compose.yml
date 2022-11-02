@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  web:
+    container_name: web-test-container
+    hostname: web-server
+    image: node:16.16.0-alpine3.16
+    init: true
+    # platform: linux/x86_64 # m1 mac
+    working_dir: /app/server
+    volumes:
+      - type: bind
+        source: .
+        target: /app/server
+    command: node run.mjs
